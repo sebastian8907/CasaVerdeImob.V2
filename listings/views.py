@@ -13,7 +13,6 @@ def about(request):
 def home_page(request):
     context = {}
     heading_listings = Listing.objects.order_by('-list_date').filter(transactions__exact='2').all()[:5]
-
     featured_listings = Listing.objects.order_by('price').filter(transactions__exact='2').all()[:5]
 
     is_logged_in = request.user is not None and not request.user.is_anonymous
@@ -29,8 +28,8 @@ def listing_create(request):
         if listing_create.is_valid():
             listing_create.save()
             return redirect('/listing/0/0/')
-    is_logged_in = request.user is not None and not request.user.is_anonymous
 
+    is_logged_in = request.user is not None and not request.user.is_anonymous
     return render(request, 'listing/listing_create_update.html',
                   {'form': listing_create_form, 'submit': 'Adauga anunt', 'option': 'Adauga Anunt',
                    'is_logged_in': is_logged_in})
@@ -74,7 +73,6 @@ class ListingDetailView(DetailView):
 
 
 def listing_show(request, types, transactions, rooms='0', district='0'):
-
     # keywords
     searched = ''
     try:
@@ -103,7 +101,6 @@ def listing_show(request, types, transactions, rooms='0', district='0'):
     # rooms
     if 'rooms' in request.POST.keys():
         rooms = request.POST.get('rooms')
-
     if rooms == '0':
         listings_rooms = Listing.objects.all()
     else:
@@ -112,7 +109,6 @@ def listing_show(request, types, transactions, rooms='0', district='0'):
     # district
     if 'district' in request.POST.keys():
         district = request.POST.get('district')
-
     if district == '0':
         listings_district = Listing.objects.all()
     else:
@@ -142,7 +138,6 @@ def listing_show(request, types, transactions, rooms='0', district='0'):
     properties = paginator.get_page(page)
 
     is_logged_in = request.user is not None and not request.user.is_anonymous
-
     return render(request, 'listing/listings_show.html',
                   {'properties': properties, 'is_logged_in': is_logged_in,
                    'path': request.get_full_path()})
