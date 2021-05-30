@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block content %}
+
+    <!--/ Intro /-->
+    <section class="intro-single">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-8">
+                    <div class="title-single-box">
+                        <h1 class="title-single">Contact</h1>
+                        <span class="color-text-a">Cum pupa auferant de me nescio quomodo terrueris Rotated a summis ex pennis pupa quod numquam antea et revertatur. Et sedebam iam plumis caput serpentis putabam me non posse, ut audivi a populo aliquando fuerint serpentes per foramina ubi non posui et animum suum opupam quoque.</span>
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-4">
+                    <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="{% url 'homepage' %}">Acasa</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">
+                                Contact
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/ Intro End /-->
+
+    <!--/ Contact /-->
+    <section class="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="contact-map box">
+                        <div id="map" class="contact-map">
+                            <iframe src="https://maps.google.com/maps?width=100%25&amp;height=450&amp;hl=en&amp;q=Park%20lake+(Bucharest)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+                                    width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 section-t8">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <form class="form-a contactForm" action="" method="post" role="form">
+                                {% csrf_token %}
+                                <div id="sendmessage">Mesajul dvs. a fost trimis. Multumim!</div>
+                                <div id="errormessage">A aparut o eroare! Va rugam sa incercati din nou.</div>
+                                <div class="row">
+                                    <div class="col-md-12 mb-3">
+                                        <div class="form-group">
+                                            <input type="text" name="name"
+                                                   class="form-control form-control-lg form-control-a"
+                                                   placeholder="Numele dvs." data-rule="minlen:4"
+                                                   data-msg="Va rugam sa introduceti cel putin 4 caractere.">
+                                            <div class="validation"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="form-group">
+                                            <input name="from_email" type="email"
+                                                   class="form-control form-control-lg form-control-a"
+                                                   placeholder="Email" data-rule="email"
+                                                   data-msg="Va rugam sa introduceti un email valid.">
+                                            <div class="validation"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="form-group">
+                                            <input type="text" name="phone"
+                                                   class="form-control form-control-lg form-control-a"
+                                                   placeholder="07XXXXXXXX" data-rule="minlen:10"
+                                                   data-msg="Nr. de tel trebuie sa contina minim 10 cifre.">
+                                            <div class="validation"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                        <div class="form-group">
+                                            <textarea class="form-control" name="message" cols="45"
+                                                      rows="8" data-rule="required"
+                                                      data-msg="Va rugam sa scrieti ceva pentru noi."
+                                                      placeholder="Mesajul dvs."></textarea>
+                                            <div class="validation"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <button type="submit" class="btn btn-a">Trimite Mesaj</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-5 section-md-t3">
+                            <div class="icon-box section-b2">
+                                <div class="icon-box-icon">
+                                    <span class="ion-ios-paper-plane"></span>
+                                </div>
+                                <div class="icon-box-content table-cell">
+                                    <div class="icon-box-title">
+                                        <h4 class="icon-title">Say Hello</h4>
+                                    </div>
+                                    <div class="icon-box-content">
+                                        <p class="mb-1">Email:
+                                            <span class="color-a">casaverde.imobiliare@gmail.com</span>
+                                        </p>
+                                        <p class="mb-1">Telefon:
+                                            <span class="color-a">+40 759 807 256</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="icon-box section-b2">
+                                <div class="icon-box-icon">
+                                    <span class="ion-ios-pin"></span>
+                                </div>
+                                <div class="icon-box-content table-cell">
+                                    <div class="icon-box-title">
+                                        <h4 class="icon-title">Sediu</h4>
+                                    </div>
+                                    <div class="icon-box-content">
+                                        <p class="mb-1">
+                                            Bucuresti, Park Lake,
+                                            <br> Romania
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="icon-box">
+                                <div class="icon-box-icon">
+                                    <span class="ion-ios-redo"></span>
+                                </div>
+                                <div class="icon-box-content table-cell">
+                                    <div class="icon-box-title">
+                                        <h4 class="icon-title">Social networks</h4>
+                                    </div>
+                                    <div class="icon-box-content">
+                                        <div class="socials-footer">
+                                            <ul class="list-inline">
+                                                <li class="list-inline-item">
+                                                    <a href="https://www.facebook.com/CasaVerde.imo" class="link-one"
+                                                       style="background-color: #1877f2; color: #fff; border-radius: 5px; padding: 0 10px; font-size: 20px;">
+                                                        <i class="fa fa-facebook" aria-hidden="true">acebook</i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/ Contact End /-->
+
+{% endblock %}

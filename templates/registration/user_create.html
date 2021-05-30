@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% block title %}Cont Nou{% endblock %}
+
+{% block content %}
+
+    <!--/ Intro /-->
+    <section class="intro-single">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-8">
+                    <div class="title-single-box">
+                        <h1 class="title-single">Cont Nou</h1>
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-4">
+                    <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="{% url 'homepage' %}">Acasa</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">
+                                Cont Nou
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/ Intro /-->
+
+    <!--/ User Create /-->
+    <section class="contact">
+        <div class="container">
+            <form class="form-a contactForm" action="" method="post">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <input type="text" name="first_name"
+                                   class="form-control form-control-lg form-control-a"
+                                   placeholder="Prenume" required>
+                            <div class="validation"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="last_name"
+                                   class="form-control form-control-lg form-control-a"
+                                   placeholder="Nume" required>
+                            <div class="validation"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email"
+                                   class="form-control form-control-lg form-control-a"
+                                   placeholder="Email" data-rule="email" required>
+                            <div class="validation"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="passwd"
+                                   class="form-control form-control-lg form-control-a"
+                                   placeholder="Parola" data-rule="minlen:6" required>
+                            <div class="validation"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="passwd2"
+                                   class="form-control form-control-lg form-control-a"
+                                   placeholder="Confirm Parola" data-rule="minlen:6" required>
+                            <div class="validation"></div>
+                        </div>
+                        <div class="form-group">
+                            <h5 style="color: darkred">{{ error }}</h5>
+                            <div class="validation"></div>
+                        </div>
+                        <div class="form-group">
+                            <p>Prin crearea unui cont, sunteti de acord cu <a href="{% url 'termenisiconditii' %}">Termenii
+                                de Utilizare</a> si <a href="{% url 'gdpr' %}">Politica de
+                                Confidentialitate</a> a Casa Verde Imob</p>
+                        </div>
+                        <button type="submit" class="btn btn-a">Inregistreaza-te</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+    <!--/ User Create /-->
+
+{% endblock %}

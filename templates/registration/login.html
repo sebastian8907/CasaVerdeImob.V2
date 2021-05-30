@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% block title %}Autentificare{% endblock %}
+
+{% block content %}
+
+    {% if form.errors %}
+        <p>Emailul si parola nu s-au potrivit. Va rugam sa incercati din nou.</p>
+    {% endif %}
+
+    {% if next %}
+        {% if user.is_authenticated %}
+            <p>Contul dvs. nu are acces la aceasta pagina. Pentru a continua va rugam sa va autentificati cu un cont
+                care are acces.</p>
+        {% else %}
+            <p>Va rugam sa va autentificati pentru a vedea aceasta pagina.</p>
+        {% endif %}
+    {% endif %}
+
+
+    <!--/ Intro /-->
+    <section class="intro-single">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-8">
+                    <div class="title-single-box">
+                        <h1 class="title-single">Autentificare</h1>
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-4">
+                    <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="{% url 'homepage' %}">Acasa</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">
+                                Autentificare
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/ Intro /-->
+
+    <!--/ Authentication /-->
+    <section class="contact">
+        <div class="container">
+            <form class="form-a contactForm" action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <input type="email" name="username"
+                                   class="form-control form-control-lg form-control-a"
+                                   placeholder="Email" data-rule="email">
+                            <div class="validation"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="password"
+                                   class="form-control form-control-lg form-control-a"
+                                   placeholder="Parola" data-rule="minlen:6">
+                            <div class="validation"></div>
+                        </div>
+                        <div class="form-group">
+                            <p><a style="color: darkred" href="{% url 'password_reset' %}">Ai uitat parola?</a></p>
+                            <div class="validation"></div>
+                        </div>
+                        <button type="submit" class="btn btn-a">Autentificare</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+    <!--/ Authentication /-->
+
+{% endblock %}

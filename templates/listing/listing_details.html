@@ -1,0 +1,193 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ listd.title }}{% endblock %}
+
+
+{% block content %}
+
+    <!--/ Intro /-->
+    <section class="intro-single">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-8">
+                    <div class="title-single-box">
+                        <h1 class="title-single">{{ prop.title }}</h1>
+                        <span class="color-text-a">{{ prop.city }} / Sector {{ prop.district }}</span>
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-4">
+                    <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="{% url 'homepage' %}">Acasa</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="{% url 'listing' types='0' transactions='0' %}">Proprietati</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">{{ prop.get_types_display }}
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/ Intro End /-->
+
+    <!--/ Property /-->
+    <section class="property-single nav-arrow-b">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div id="property-single-carousel" class="owl-carousel owl-arrow gallery-property">
+                        <div class="carousel-item-b">
+                            <img src="{{ prop.photo_main.url }}" alt="photo"
+                                 style="max-width: 100vw; max-height: 75vh; min-height: 35vh;">
+                        </div>
+                        {% if prop.photo_1 %}
+                            <div class="carousel-item-b">
+                                <img src="{{ prop.photo_1.url }}" alt="photo"
+                                     style="max-width: 100vw; max-height: 75vh; min-height: 35vh;">
+                            </div>
+                        {% endif %}
+                        {% if prop.photo_2 %}
+                            <div class="carousel-item-b">
+                                <img src="{{ prop.photo_2.url }}" alt="photo"
+                                     style="max-width: 100vw; max-height: 75vh; min-height: 35vh;">
+                            </div>
+                        {% endif %}
+                        {% if prop.photo_3 %}
+                            <div class="carousel-item-b">
+                                <img src="{{ prop.photo_3.url }}" alt="photo"
+                                     style="max-width: 100vw; max-height: 75vh; min-height: 35vh;">
+                            </div>
+                        {% endif %}
+                        {% if prop.photo_4 %}
+                            <div class="carousel-item-b">
+                                <img src="{{ prop.photo_4.url }}" alt="photo"
+                                     style="max-width: 100vw; max-height: 75vh; min-height: 35vh;">
+                            </div>
+                        {% endif %}
+                        {% if prop.photo_5 %}
+                            <div class="carousel-item-b">
+                                <img src="{{ prop.photo_5.url }}" alt="photo"
+                                     style="max-width: 100vw; max-height: 75vh; min-height: 35vh;">
+                            </div>
+                        {% endif %}
+                        {% if prop.photo_6 %}
+                            <div class="carousel-item-b">
+                                <img src="{{ prop.photo_6.url }}" alt="photo"
+                                     style="max-width: 100vw; max-height: 75vh; min-height: 35vh;">
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="row justify-content-between">
+                        <div class="col-md-5 col-lg-4">
+                            <div class="property-price d-flex justify-content-center foo">
+                                <div class="card-header-c d-flex">
+                                    <div class="card-title-c align-self-center">
+                                        <h5 class="title-c">{{ prop.get_currency_display }} {{ prop.price }}</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="property-summary">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="title-box-d section-t4">
+                                            <h3 class="title-d">Detalii</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="summary-list">
+                                    <ul class="list">
+                                        <li class="d-flex justify-content-between">
+                                            <strong>Postat:</strong>
+                                            <span>{{ prop.list_date }}</span>
+                                        </li>
+                                        <li class="d-flex justify-content-between">
+                                            <strong>ID:</strong>
+                                            <span>{{ prop.identifier }}</span>
+                                        </li>
+                                        <li class="d-flex justify-content-between">
+                                            <strong>Anul Constructiei:</strong>
+                                            <span>{{ prop.get_year_display }}</span>
+                                        </li>
+                                        <li class="d-flex justify-content-between">
+                                            <strong>Compartimentare:</strong>
+                                            <span>{{ prop.get_subdivision_display }}</span>
+                                        </li>
+                                        <li class="d-flex justify-content-between">
+                                            <strong>Suprafata:</strong>
+                                            <span>{{ prop.surface }}m<sup>2</sup>
+                                                </span>
+                                        </li>
+                                        <li class="d-flex justify-content-between">
+                                            <strong>Etaj:</strong>
+                                            <span>{{ prop.floor }}</span>
+                                        </li>
+                                        <li class="d-flex justify-content-between">
+                                            <strong>Nr. Camere:</strong>
+                                            <span>{{ prop.rooms }}</span>
+                                        </li>
+                                        <li class="d-flex justify-content-between">
+                                            <strong>Nr. Bai:</strong>
+                                            <span>{{ prop.bathrooms }}</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-7 col-lg-7 section-md-t3">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="title-box-d">
+                                        <h3 class="title-d">Descriere</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="property-description">
+                                <p class="description color-text-a">
+                                    {{ prop.description }}
+                                </p>
+                                <p class="description color-text-a no-margin">
+
+                                </p>
+                            </div>
+                            <div class="row section-t3">
+                                <div class="col-sm-12">
+                                    <div class="title-box-d">
+                                        <h3 class="title-d">Dotari</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="amenities-list color-text-a">
+                                <ul class="list-a no-margin">
+                                    <li>Balcony</li>
+                                    <li>Outdoor Kitchen</li>
+                                    <li>Cable Tv</li>
+                                    <li>Deck</li>
+                                    <li>Tennis Courts</li>
+                                    <li>Internet</li>
+                                    <li>Parking</li>
+                                    <li>Sun Room</li>
+                                    <li>Concrete Flooring</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    {% if request.user.is_staff %}
+                        <button type="button" class="btn btn-sm btn-outline-secondary">
+                            <a href="{% url 'listing_edit' id=prop.id origin_url='/listing/0/0/' %}">Editeaza</a>
+                        </button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary">
+                            <a href="{% url 'sterge_anunt' id=prop.id origin_url='/listing/0/0/' %}">Sterge</a>
+                        </button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/ Property End /-->
+
+{% endblock %}
