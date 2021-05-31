@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-0g2%y(oyvpr+o*r(n49y^5k!n!t52=rou)x+-)9calh4g2h4ew'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['sebastian8907.pythonanywhere.com']
 
@@ -122,7 +122,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -141,3 +141,8 @@ EMAIL_HOST_USER = '****************'
 EMAIL_HOST_PASSWORD = '*****'
 
 USE_THOUSAND_SEPARATOR = True
+
+try:
+    from .local_settings import *
+except ImportError:
+    print("Looks like no local file. You must be on production.")
