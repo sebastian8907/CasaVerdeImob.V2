@@ -5,4 +5,3 @@ class ContactForm(forms.Form):
     phone = forms.IntegerField(required=True)
     message = forms.CharField(required=True)
     name = forms.CharField(required=True)
-
