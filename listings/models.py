@@ -1,6 +1,5 @@
 from django.db import models
 from datetime import datetime
-from django.urls import reverse
 from django.utils.crypto import get_random_string
 import string
 
@@ -32,7 +31,6 @@ class Listing(models.Model):
         ('2', 'Semidecomandat'),
         ('3', 'Circular'),
     ))
-    # rooms = models.IntegerField(blank=True, null=True)
     rooms = models.CharField(max_length=10, blank=True, choices=(
         ('1', '1 Camere'),
         ('2', '2 Camere'),
@@ -57,7 +55,6 @@ class Listing(models.Model):
         ('5', 'Sector 5'),
         ('6', 'Sector 6'),
     ))
-
     photo_main = models.ImageField(blank=False, upload_to='static/admin/img/listing_photo')
     photo_1 = models.ImageField(blank=True, upload_to='static/admin/img/listing_photo')
     photo_2 = models.ImageField(blank=True, upload_to='static/admin/img/listing_photo')

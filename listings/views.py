@@ -7,7 +7,8 @@ from .forms import ListingCreate
 
 
 def about(request):
-    return render(request, 'about.html', context={})
+    is_logged_in = request.user is not None and not request.user.is_anonymous
+    return render(request, 'about.html', {'is_logged_in': is_logged_in})
 
 
 def home_page(request):

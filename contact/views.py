@@ -20,4 +20,6 @@ def contact(request):
                           fail_silently=False, auth_user=None, auth_password=None)
             except BadHeaderError:
                 return HttpResponse('A aparut o eroare! Incearca din nou.')
-    return render(request, "contact/email.html", {'form': contact_us})
+
+    is_logged_in = request.user is not None and not request.user.is_anonymous
+    return render(request, "contact/email.html", {'form': contact_us, 'is_logged_in': is_logged_in})
