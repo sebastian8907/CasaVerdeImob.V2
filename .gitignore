@@ -6,3 +6,4 @@ local_settings.py
 /static/
 venv/
 db.sqlite3
+db.sqlite3
